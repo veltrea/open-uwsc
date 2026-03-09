@@ -1,0 +1,15 @@
+// Window Automation Test (Phase 7)
+id = GETID("メモ帳", "Notepad")
+IF id > 0 THEN
+    PRINT "Found Notepad: " + id
+    CTRLWIN(id, ACTIVATE)
+    PRINT "Activating..."
+    SLEEP(1)
+    CTRLWIN(id, MIN)
+    PRINT "Minimizing..."
+    SLEEP(1)
+    CTRLWIN(id, NORMAL)
+    PRINT "Restoring..."
+ELSE
+    PRINT "Notepad NOT found. Please open Notepad to test."
+ENDIF

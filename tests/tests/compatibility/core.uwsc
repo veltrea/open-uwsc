@@ -1,0 +1,43 @@
+// Core Language Compatibility Test Suite
+FID = FOPEN("tests/compatibility/logs/core_rs.log", F_WRITE)
+
+PROCEDURE LOG(msg)
+    FPUT(FID, msg)
+FEND
+
+LOG("--- Var (Pass-by-Reference) Test ---")
+PROCEDURE INC(Var x)
+    x = x + 1
+FEND
+
+val = 10
+INC(val)
+LOG("val after INC = " + val)
+
+LOG("--- Default Parameter Test ---")
+FUNCTION GREET(name = "World")
+    RESULT = "Hello " + name
+FEND
+
+LOG("GREET() = " + GREET())
+LOG("GREET('User') = " + GREET("User"))
+
+LOG("--- HASHTBL CaseCare Test ---")
+HASHTBL H_SENSITIVE = HASH_CASECARE
+H_SENSITIVE["Key"] = "Value1"
+LOG("H_SENSITIVE['key'] = " + H_SENSITIVE["key"]) // Should be Empty
+
+HASHTBL H_INSENSITIVE
+H_INSENSITIVE["Key"] = "Value2"
+LOG("H_INSENSITIVE['key'] = " + H_INSENSITIVE["key"]) // Should be Value2
+
+LOG("--- EXIT Test ---")
+FUNCTION TEST_EXIT()
+    LOG("Before EXIT")
+    EXIT
+    LOG("After EXIT (Should not see this)")
+FEND
+TEST_EXIT()
+
+FCLOSE(FID)
+PRINT "Core test log generated."

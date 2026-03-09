@@ -1,0 +1,12 @@
+// Phase 9 Level 5 Test
+PROCEDURE AsyncHello(name)
+    SLEEP(0.5)
+    PRINT "Hello from thread, " + name
+FEND
+
+PRINT "Spawning thread..."
+THREAD AsyncHello("World")
+
+PRINT "Main thread continuing..."
+SLEEP(1.0)
+PRINT "Level 5 verification complete."

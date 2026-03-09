@@ -1,0 +1,28 @@
+// Math Compatibility Test Suite
+FID = FOPEN("tests/compatibility/logs/math_rs.log", F_WRITE)
+
+PROCEDURE LOG(msg)
+    FPUT(FID, msg)
+FEND
+
+LOG("--- Arithmetic Test ---")
+LOG("1 + 2 = " + (1 + 2))
+LOG("10 - 3 = " + (10 - 3))
+LOG("5 * 4 = " + (5 * 4))
+LOG("10 / 2 = " + (10 / 2))
+LOG("10 / 3 = " + (10 / 3))
+
+LOG("--- Modulo Test ---")
+LOG("10 MOD 3 = " + (10 MOD 3))
+LOG("10.5 MOD 3 = " + (10.5 MOD 3))
+
+LOG("--- Zero Division Test ---")
+LOG("10 / 0 = " + (10 / 0))
+LOG("10 MOD 0 = " + (10 MOD 0))
+
+LOG("--- Type Promotion Test ---")
+MAX_INT = 9223372036854775807
+LOG("MAX + 1 = " + (MAX_INT + 1))
+
+FCLOSE(FID)
+PRINT "Math test log generated."

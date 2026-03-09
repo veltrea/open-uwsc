@@ -1,0 +1,21 @@
+// Test for LENGTH, COPY, POS
+
+// 1. LENGTH
+text = "Hello World"
+PRINT "LENGTH('" + text + "') = " + LENGTH(text) // Expect 11
+PRINT "LENGTH(123) = " + LENGTH(123) // Expect 3
+
+// 2. COPY
+s = "UWSC-RS Implementation"
+PRINT "COPY('" + s + "', 1, 4) = " + COPY(s, 1, 4) // Expect UWSC
+PRINT "COPY('" + s + "', 6) = " + COPY(s, 6) // Expect RS Implementation
+PRINT "COPY('" + s + "', 1, 100) = " + COPY(s, 1, 100) // Expect full string
+PRINT "COPY('" + s + "', 30) = '" + COPY(s, 30) + "'" // Expect empty string
+
+// 3. POS
+target = "ABCABCABC"
+PRINT "POS('A', '" + target + "') = " + POS("A", target) // Expect 1
+PRINT "POS('A', '" + target + "', 2) = " + POS("A", target, 2) // Expect 4
+PRINT "POS('A', '" + target + "', -1) = " + POS("A", target, -1) // Expect 7
+PRINT "POS('Z', '" + target + "') = " + POS("Z", target) // Expect 0
+PRINT "POS('ABC', '" + target + "', 2) = " + POS("ABC", target, 2) // Expect 4

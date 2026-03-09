@@ -1,0 +1,19 @@
+// Minimizing current terminal window to avoid obscuring the screen
+id = GETID(GET_ACTIVE_WIN)
+CTRLWIN(id, MIN)
+SLEEP 2
+
+// Test Case 4: Guaranteed Positive Search (Template from Screen)
+PRINT "Scanning for guaranteed template (captured from screen)..."
+DIM res = CHKIMG("tests/fixtures/images/guaranteed_template.png", 0, 0, 0, -1, -1, 25)
+IF res == TRUE
+    PRINT "Success: Guaranteed image found at (" + G_IMG_X + ", " + G_IMG_Y + ")"
+    IFB (G_IMG_X > 0) and (G_IMG_Y > 0)
+        PRINT "Coordinates look valid (non-zero)."
+    ENDIF
+ELSE
+    PRINT "Failure: Even guaranteed image not found."
+ENDIF
+
+// Restore window
+CTRLWIN(id, NORMAL)

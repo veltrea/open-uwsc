@@ -1,0 +1,204 @@
+    Checking open-uwsc v0.1.0 (C:\dev\uwsc\uwsc-rs)
+warning: unused import: `UnaryOp`
+ --> src\evaluator.rs:1:52
+  |
+1 | use crate::parser::{Stmt, Expr, Literal, BinaryOp, UnaryOp};
+  |                                                    ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:184:28
+    |
+184 |         let text = args[0].to_string();
+    |                            ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:185:29
+    |
+185 |         let delim = args[1].to_string();
+    |                             ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0282]: type annotations needed
+   --> src\builtins.rs:186:64
+    |
+186 |         let parts: Vec<RuntimeValue> = text.split(&delim).map(|s| RuntimeValue::String(s.to_string())).collect();
+    |                                                                ^                       - type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+186 |         let parts: Vec<RuntimeValue> = text.split(&delim).map(|s: /* Type */| RuntimeValue::String(s.to_string())).collect();
+    |                                                                 ++++++++++++
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:196:28
+    |
+196 |         let list = args[0].to_string();
+    |                            ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:197:29
+    |
+197 |         let delim = args[1].to_string();
+    |                             ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:203:41
+    |
+203 |         Ok(RuntimeValue::String(args[0].to_string().trim().to_string()))
+    |                                         ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:208:27
+    |
+208 |         let res = args[0].to_string().starts_with(&args[1].to_string());
+    |                           ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:208:60
+    |
+208 |         let res = args[0].to_string().starts_with(&args[1].to_string());
+    |                                                            ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:214:27
+    |
+214 |         let res = args[0].to_string().ends_with(&args[1].to_string());
+    |                           ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+error[E0599]: `RuntimeValue` doesn't implement `std::fmt::Display`
+   --> src\builtins.rs:214:58
+    |
+214 |         let res = args[0].to_string().ends_with(&args[1].to_string());
+    |                                                          ^^^^^^^^^ method cannot be called on `RuntimeValue` due to unsatisfied trait bounds
+    |
+   ::: src\evaluator.rs:6:1
+    |
+  6 | pub enum RuntimeValue {
+    | --------------------- method `to_string` not found for this enum because it doesn't satisfy `RuntimeValue: ToString` or `RuntimeValue: std::fmt::Display`
+    |
+    = note: the following trait bounds were not satisfied:
+            `RuntimeValue: std::fmt::Display`
+            which is required by `RuntimeValue: ToString`
+note: the trait `std::fmt::Display` must be implemented
+   --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\fmt\mod.rs:1186:1
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `to_string`, perhaps you need to implement it:
+            candidate #1: `ToString`
+
+Some errors have detailed explanations: E0282, E0599.
+For more information about an error, try `rustc --explain E0282`.
+warning: `open-uwsc` (bin "open-uwsc") generated 1 warning
+error: could not compile `open-uwsc` (bin "open-uwsc") due to 10 previous errors; 1 warning emitted

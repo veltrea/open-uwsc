@@ -1,0 +1,82 @@
+    Checking open-uwsc v0.1.0 (C:\dev\uwsc\uwsc-rs)
+warning: unused import: `Expr`
+ --> src\resolver.rs:1:27
+  |
+1 | use crate::parser::{Stmt, Expr};
+  |                           ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::env`
+  --> src\main.rs:10:5
+   |
+10 | use std::env;
+   |     ^^^^^^^^
+
+warning: unreachable pattern
+   --> src\evaluator.rs:123:21
+    |
+123 |                     _ => Err(format!("Unimplemented binary operator: {:?}", op)),
+    |                     ^ no value can reach this
+    |
+note: multiple earlier patterns match some of the same values
+   --> src\evaluator.rs:123:21
+    |
+109 |                     BinaryOp::Add | BinaryOp::Plus => l.add(&r),
+    |                     ------------------------------ matches some of the same values
+110 |                     BinaryOp::Sub | BinaryOp::Minus => l.sub(&r),
+    |                     ------------------------------- matches some of the same values
+111 |                     BinaryOp::Mul => l.mul(&r),
+    |                     ------------- matches some of the same values
+112 |                     BinaryOp::Div => l.div(&r),
+    |                     ------------- matches some of the same values
+...
+123 |                     _ => Err(format!("Unimplemented binary operator: {:?}", op)),
+    |                     ^ ...and 10 other patterns collectively make this unreachable
+    = note: `#[warn(unreachable_patterns)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `input` is never read
+  --> src\lexer.rs:97:5
+   |
+96 | pub struct Lexer<'a> {
+   |            ----- field in this struct
+97 |     input: &'a str,
+   |     ^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `functions` and `builtins` are never read
+  --> src\evaluator.rs:21:5
+   |
+17 | pub struct Evaluator {
+   |            --------- fields in this struct
+...
+21 |     functions: HashMap<String, (Vec<String>, Vec<Stmt>)>,
+   |     ^^^^^^^^^
+22 |     builtins: Builtins,
+   |     ^^^^^^^^
+
+warning: fields `enigo`, `gui_tx`, and `ai` are never read
+  --> src\builtins.rs:34:5
+   |
+33 | pub struct Builtins {
+   |            -------- fields in this struct
+34 |     enigo: Enigo,
+   |     ^^^^^
+35 |     gui_tx: Option<mpsc::Sender<GuiRequest>>,
+   |     ^^^^^^
+36 |     ai: AiConfig,
+   |     ^^
+
+warning: fields `scopes` and `locals` are never read
+ --> src\resolver.rs:5:5
+  |
+4 | pub struct Resolver {
+  |            -------- fields in this struct
+5 |     scopes: Vec<HashMap<String, bool>>,
+  |     ^^^^^^
+6 |     locals: HashMap<usize, usize>,
+  |     ^^^^^^
+
+warning: `open-uwsc` (bin "open-uwsc" test) generated 7 warnings (run `cargo fix --bin "open-uwsc" -p open-uwsc --tests` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.41s

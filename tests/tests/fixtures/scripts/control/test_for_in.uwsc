@@ -1,0 +1,14 @@
+// Note: Array literal test depends on the [] syntax being implemented as well.
+DIM arr = [100, 200, 300]
+PRINT "Array size test (simulated by FOR-IN count)"
+DIM count = 0
+FOR item IN arr
+    PRINT "Item: " + item
+    count = count + 1
+NEXT
+
+IFB count == 3
+    PRINT "FOR-IN and Array Literal Test PASSED"
+ELSE
+    PRINT "FOR-IN and Array Literal Test FAILED"
+ENDIF

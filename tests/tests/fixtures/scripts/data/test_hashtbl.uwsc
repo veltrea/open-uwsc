@@ -1,0 +1,7 @@
+HASHTBL v
+PRINT "Hash v = " + v
+IFB v == "{Hash}"
+    PRINT "HASHTBL Test PASSED"
+ELSE
+    PRINT "HASHTBL Test FAILED"
+ENDIF

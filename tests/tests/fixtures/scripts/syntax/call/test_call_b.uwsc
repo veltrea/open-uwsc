@@ -1,0 +1,3 @@
+PRINT "Inside test_call_b.uwsc"
+DIM call_val = "B was here"
+PRINT "call_val set to: " + call_val

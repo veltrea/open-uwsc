@@ -1,0 +1,78 @@
+    Checking owned_ttf_parser v0.25.1
+   Compiling quote v1.0.45
+    Checking ahash v0.8.12
+    Checking windows-sys v0.52.0
+   Compiling glutin_wgl_sys v0.6.1
+   Compiling glutin_egl_sys v0.7.1
+    Checking moxcms v0.7.11
+    Checking png v0.18.1
+    Checking windows-sys v0.60.2
+    Checking ab_glyph v0.2.32
+   Compiling syn v2.0.117
+    Checking winit v0.30.13
+    Checking glutin v0.32.3
+   Compiling synstructure v0.13.2
+   Compiling zerofrom-derive v0.1.6
+   Compiling yoke-derive v0.8.1
+   Compiling windows-interface v0.59.3
+   Compiling windows-implement v0.60.2
+   Compiling zerovec-derive v0.11.2
+   Compiling displaydoc v0.2.5
+   Compiling bytemuck_derive v1.10.2
+    Checking windows-core v0.61.2
+    Checking windows-core v0.62.2
+    Checking glutin-winit v0.5.0
+    Checking zerofrom v0.1.6
+    Checking yoke v0.8.1
+    Checking windows-future v0.2.1
+    Checking windows-collections v0.2.0
+    Checking windows-numerics v0.2.0
+    Checking windows-future v0.3.2
+    Checking windows-numerics v0.3.1
+    Checking windows-collections v0.3.2
+    Checking bytemuck v1.25.0
+    Checking zerovec v0.11.5
+    Checking zerotrie v0.2.3
+    Checking windows v0.61.3
+    Checking emath v0.33.3
+    Checking image v0.25.9
+    Checking windows v0.62.2
+    Checking ecolor v0.33.3
+    Checking tinystr v0.8.2
+    Checking potential_utf v0.1.4
+    Checking epaint v0.33.3
+    Checking icu_collections v2.1.1
+    Checking icu_locale_core v2.1.1
+    Checking icu_provider v2.1.1
+    Checking egui v0.33.3
+    Checking icu_properties v2.1.2
+    Checking icu_normalizer v2.1.1
+    Checking arboard v3.6.1
+    Checking idna_adapter v1.2.1
+    Checking idna v1.1.0
+    Checking url v2.5.8
+    Checking webbrowser v1.1.0
+    Checking egui_glow v0.33.3
+    Checking accesskit_windows v0.29.2
+    Checking enigo v0.6.1
+    Checking accesskit_winit v0.29.2
+    Checking egui-winit v0.33.3
+    Checking eframe v0.33.3
+    Checking open-uwsc v0.1.0 (C:\dev\uwsc\uwsc-rs)
+error[E0432]: unresolved import `windows::Win32::Foundation::BOOL`
+ --> src\builtins.rs:8:48
+  |
+8 | use windows::Win32::Foundation::{HWND, LPARAM, BOOL};
+  |                                                ^^^^ no `BOOL` in `Win32::Foundation`
+
+warning: unused import: `UnaryOp`
+ --> src\evaluator.rs:1:52
+  |
+1 | use crate::parser::{Stmt, Expr, Literal, BinaryOp, UnaryOp};
+  |                                                    ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+For more information about this error, try `rustc --explain E0432`.
+warning: `open-uwsc` (bin "open-uwsc") generated 1 warning
+error: could not compile `open-uwsc` (bin "open-uwsc") due to 1 previous error; 1 warning emitted

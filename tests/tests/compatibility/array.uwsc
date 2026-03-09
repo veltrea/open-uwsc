@@ -1,0 +1,35 @@
+// Array Compatibility Test Suite
+FID = FOPEN("tests/compatibility/logs/array_rs.log", F_WRITE)
+
+PROCEDURE LOG(msg)
+    FPUT(FID, msg)
+FEND
+
+PROCEDURE LOG_ARRAY(name, arr)
+    LOG(name + " STATUS:")
+    FOR i = 0 TO LENGTH(arr) - 1
+        LOG("  [" + i + "] = " + arr[i])
+    NEXT
+FEND
+
+LOG("--- Array Manipulation Test ---")
+DIM arr[] = 1, 3, 2, 5, 4
+
+LOG("--- QSORT ---")
+QSORT(arr, QSRT_A)
+LOG_ARRAY("arr", arr)
+
+LOG("--- RESIZE ---")
+RESIZE(arr, 2)
+LOG_ARRAY("arr", arr)
+
+LOG("--- SETCLEAR ---")
+SETCLEAR(arr, 99)
+LOG_ARRAY("arr", arr)
+
+LOG("--- SLICE ---")
+arr2 = SLICE(arr, 0, 1)
+LOG_ARRAY("arr2", arr2)
+
+FCLOSE(FID)
+PRINT "Array test log generated."

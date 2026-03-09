@@ -1,0 +1,10 @@
+PRINT "Starting CALL test in test_call_a.uwsc"
+CALL "c:\dev\uwsc\uwsc-rs\tests\fixtures\scripts\syntax\call\test_call_b.uwsc"
+PRINT "Back in test_call_a.uwsc"
+PRINT "Checking call_val: " + call_val
+
+IFB call_val == "B was here"
+    PRINT "CALL Test PASSED"
+ELSE
+    PRINT "CALL Test FAILED"
+ENDIF

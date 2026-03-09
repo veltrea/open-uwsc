@@ -1,0 +1,29 @@
+// test_kbd.uwsc
+CONST VK_A = 65
+CONST VK_B = 66
+CONST VK_C = 67
+CONST VK_RETURN = 13
+CONST ACTIVATE = 2
+
+// Open Notepad to receive input
+EXEC("notepad.exe")
+SLEEP(1)
+id = GETID("無題 - メモ帳", "Notepad")
+IF id < 0 THEN
+    id = GETID("Untitled - Notepad", "Notepad")
+ENDIF
+
+IF id > 0 THEN
+    CTRLWIN(id, ACTIVATE)
+    SLEEP(0.5)
+    // Send "ABC"
+    KBD(VK_A, 0) // 0 = CLICK
+    KBD(VK_B, 0)
+    KBD(VK_C, 0)
+    KBD(VK_RETURN, 0)
+    PRINT "Keys sent to Notepad."
+ELSE
+    PRINT "Notepad not found: " + id
+ENDIF
+
+PRINT "Test Finished"

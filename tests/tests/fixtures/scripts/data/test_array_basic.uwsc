@@ -1,0 +1,8 @@
+DIM arr[5]
+arr[0] = 10
+arr[1] = 20
+arr[4] = 50
+PRINT arr[0]
+PRINT arr[1]
+PRINT arr[4]
+// PRINT arr[5] // Should error (out of bounds)

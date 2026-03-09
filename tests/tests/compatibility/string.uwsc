@@ -1,0 +1,25 @@
+// String Compatibility Test Suite
+FID = FOPEN("tests/compatibility/logs/string_rs.log", F_WRITE)
+
+PROCEDURE LOG(msg)
+    FPUT(FID, msg)
+FEND
+
+LOG("--- Basic String Test ---")
+LOG("LENGTH('Hello') = " + LENGTH("Hello"))
+LOG("LENGTH('') = " + LENGTH(""))
+
+LOG("--- BETWEENSTR Test ---")
+S = "A[123]B"
+LOG("BETWEENSTR(S, '[', ']') = " + BETWEENSTR(S, "[", "]"))
+LOG("BETWEENSTR(S, 'X', 'Y') = " + BETWEENSTR(S, "X", "Y"))
+
+LOG("--- TEXTBLOCK Test ---")
+TEXTBLOCK TB
+  Line 1
+  Line 2
+ENDTEXTBLOCK
+LOG("TEXTBLOCK = " + TB)
+
+FCLOSE(FID)
+PRINT "String test log generated."

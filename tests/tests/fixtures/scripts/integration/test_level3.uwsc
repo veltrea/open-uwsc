@@ -1,0 +1,15 @@
+// Phase 9 Level 3 Test
+PRINT "Testing CHKIMG('test.png')..."
+// This will likely fail or return false because we don't have a 'test.png'
+res = CHKIMG("test.png")
+IF res THEN
+    PRINT "Image Found at (" + G_IMG_X + ", " + G_IMG_Y + ")"
+ELSE
+    PRINT "Image Not Found (as expected without file)."
+ENDIF
+
+PRINT "Testing CREATEOLEOBJ placeholder..."
+obj = CREATEOLEOBJ("InternetExplorer.Application")
+PRINT "OLE Object: " + obj
+
+PRINT "Level 3 verification (placeholders) complete."

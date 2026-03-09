@@ -1,0 +1,11 @@
+PRINT "Starting EXIT test..."
+DIM i = 0
+WHILE i < 10
+    PRINT "i = " + i
+    IFB i == 3
+        PRINT "Exiting at i == 3"
+        EXIT
+    ENDIF
+    i = i + 1
+WEND
+PRINT "This line should NOT be printed (EXIT failed)"

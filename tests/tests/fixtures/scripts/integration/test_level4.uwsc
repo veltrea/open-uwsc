@@ -1,0 +1,9 @@
+// Phase 9 Level 4 Test
+PRINT "Testing DEF_DLL placeholder..."
+DEF_DLL("GetSystemMetrics", "user32.dll", "int", "int")
+
+// In real UWSC, the function becomes available globally.
+// For now, we verify DEF_DLL at least executes.
+PRINT "DEF_DLL executed successfully."
+
+PRINT "Level 4 verification (placeholders) complete."

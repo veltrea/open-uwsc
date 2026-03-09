@@ -1,0 +1,17 @@
+// test_special_vars.uwsc
+// Verification for G_SCREEN_W, G_SCREEN_H, G_MOUSE_X, G_MOUSE_Y
+
+PRINT "--- Special Variables ---"
+PRINT "G_SCREEN_W: " + G_SCREEN_W
+PRINT "G_SCREEN_H: " + G_SCREEN_H
+PRINT "G_MOUSE_X: " + G_MOUSE_X
+PRINT "G_MOUSE_Y: " + G_MOUSE_Y
+
+// Check if they are dynamic (Move mouse slightly and check if X/Y changes might be hard in automated test, but we can at least check if they exist)
+x1 = G_MOUSE_X
+y1 = G_MOUSE_Y
+PRINT "Initial Mouse: " + x1 + ", " + y1
+SLEEP(0.5)
+x2 = G_MOUSE_X
+y2 = G_MOUSE_Y
+PRINT "Later Mouse: " + x2 + ", " + y2

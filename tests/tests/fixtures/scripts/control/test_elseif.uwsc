@@ -1,0 +1,35 @@
+// Test for multiple ELSEIF blocks
+DIM x = 2
+PRINT "x is " + x
+
+IFB x == 1
+    PRINT "ERROR: x is 1"
+ELSEIF x == 2
+    PRINT "SUCCESS: x is 2"
+ELSEIF x == 3
+    PRINT "ERROR: x is 3"
+ELSE
+    PRINT "ERROR: x is something else"
+ENDIF
+
+x = 3
+IFB x == 1
+    PRINT "ERROR: x is 1"
+ELSEIF x == 2
+    PRINT "ERROR: x is 2"
+ELSEIF x == 3
+    PRINT "SUCCESS: x is 3"
+ELSE
+    PRINT "ERROR: x is something else"
+ENDIF
+
+x = 4
+IFB x == 1
+    PRINT "ERROR: x is 1"
+ELSEIF x == 2
+    PRINT "ERROR: x is 2"
+ELSEIF x == 3
+    PRINT "ERROR: x is 3"
+ELSE
+    PRINT "SUCCESS: Else branch reached"
+ENDIF

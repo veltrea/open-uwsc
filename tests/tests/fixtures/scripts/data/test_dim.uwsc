@@ -1,0 +1,4 @@
+DIM x = 100
+PRINT "DIM x = " + x
+x = x + 50
+PRINT "x after assign = " + x

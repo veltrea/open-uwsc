@@ -1,0 +1,42 @@
+// Phase 10 Verification: ACW and STATUS
+// 1. Create a Notepad window
+EXEC("notepad")
+SLEEP(1.0)
+
+// 2. Find it
+id = GETID("メモ帳", "Notepad")
+IFB id <= 0
+    id = GETID("Notepad") // Try English title
+ENDIF
+
+IFB id > 0
+    PRINT "Found Notepad ID: " + id
+    
+    // 3. Get Status
+    initial_x = STATUS(id, ST_X)
+    initial_y = STATUS(id, ST_Y)
+    PRINT "Initial Pos: " + initial_x + ", " + initial_y
+    
+    // 4. Move Window
+    PRINT "Moving to 200, 200..."
+    ACW(id, 200, 200, 600, 400)
+    SLEEP(0.5)
+    
+    new_x = STATUS(id, ST_X)
+    new_y = STATUS(id, ST_Y)
+    PRINT "New Pos: " + new_x + ", " + new_y
+    
+    IFB (new_x = 200) AND (new_y = 200)
+        PRINT "ACW Success"
+    ELSE
+        PRINT "ACW Failure: Expected 200,200 but got " + new_x + "," + new_y
+    ENDIF
+    
+    title = STATUS(id, ST_TITLE)
+    PRINT "Status Title: " + title
+    
+    // 5. Cleanup
+    CTRLWIN(id, CLOSE)
+ELSE
+    PRINT "Notepad not found. Cannot proceed with Phase 10 test."
+ENDIF

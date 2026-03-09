@@ -1,0 +1,1 @@
+a = 0; while a < 3; b = 0; while b < 3; if b == 1 then break 2; b = b + 1; wend; a = a + 1; wend; print a; print b

@@ -1,0 +1,18 @@
+// test_chkimg_pos.uwsc
+id = GETID("CHKIMG Test")
+IFB id > 0
+    CTRLWIN(id, ACTIVATE)
+    ACW(id, 0, 0, 800, 600)
+    SLEEP(1)
+ENDIF
+
+PRINT "Starting CHKIMG scan for green_square.png..."
+res = CHKIMG("tests/fixtures/images/green_square.png")
+IFB res == TRUE
+    PRINT "Success: Found image!"
+    PRINT "Coordinates: G_IMG_X=" + G_IMG_X + ", G_IMG_Y=" + G_IMG_Y
+ELSE
+    PRINT "Failure: Image not found on screen."
+    // Try with a score/tolerance if implemented? 
+    // For now just report failure.
+ENDIF

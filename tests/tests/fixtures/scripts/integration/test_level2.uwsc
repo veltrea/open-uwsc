@@ -1,0 +1,20 @@
+// Phase 9 Level 2 Test
+PRINT "Testing DOSCMD('dir')..."
+res = DOSCMD("dir src\main.rs")
+PRINT "Result: " + res
+
+PRINT "Testing EXEC('notepad')..."
+pid = EXEC("notepad")
+PRINT "Started Notepad PID: " + pid
+
+PRINT "Testing FOPEN('test.txt')..."
+fid = FOPEN("test.txt")
+IF fid > 0 THEN
+    PRINT "File opened (Dummy ID): " + fid
+    FPUT(fid, "Hello File!")
+    FCLOSE(fid)
+ELSE
+    PRINT "FOPEN failed."
+ENDIF
+
+PRINT "Level 2 verification complete."

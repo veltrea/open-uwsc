@@ -1,0 +1,10 @@
+OPTION EXPLICIT
+DIM a = 10
+PRINT "a = " + a
+a = 20
+PRINT "a updated to " + a
+
+// The following should cause a runtime error
+PRINT "Attempting to use undeclared variable b..."
+b = 30
+PRINT "This should not be printed"

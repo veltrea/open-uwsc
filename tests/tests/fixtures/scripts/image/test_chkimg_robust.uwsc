@@ -1,0 +1,18 @@
+// test_chkimg_robust.uwsc
+// First, test missing file handling
+PRINT "Testing CHKIMG: invalid file handling..."
+res = CHKIMG("non_existent_file.png")
+IFB res == FALSE
+    PRINT "Success: Returned FALSE for missing file."
+ELSE
+    PRINT "Failure: Should have returned FALSE for missing file."
+ENDIF
+
+PRINT "Testing CHKIMG: screen capture check (no match expected for random file)..."
+// Searching for a known non-matching image
+res = CHKIMG("src/main.rs") // Not an image, should return FALSE
+IFB res == FALSE
+    PRINT "Success: Handled non-image file correctly."
+ELSE
+    PRINT "Failure: Should return FALSE for non-image files."
+ENDIF

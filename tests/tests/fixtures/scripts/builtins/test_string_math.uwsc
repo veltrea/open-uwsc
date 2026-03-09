@@ -1,0 +1,34 @@
+// test_string_math.uwsc
+// Verification for REPLACE, TRIM, VAL, RANDOM, ABS, INT, ROUND
+
+// 1. REPLACE (CHGMOJ)
+PRINT "--- REPLACE ---"
+PRINT "REPLACE('apple', 'p', 'P') = " + REPLACE("apple", "p", "P")
+PRINT "CHGMOJ('banana', 'an', 'AN') = " + CHGMOJ("banana", "an", "AN")
+PRINT "REPLACE('empty', '', 'X') = " + REPLACE("apple", "", "X")
+
+// 2. TRIM
+PRINT "--- TRIM ---"
+PRINT "TRIM('  hello  ') = '" + TRIM("  hello  ") + "'"
+PRINT "TRIM('　全角　') = '" + TRIM("　全角　") + "'"
+
+// 3. VAL
+PRINT "--- VAL ---"
+PRINT "VAL('123') = " + VAL("123")
+PRINT "VAL('45.67') = " + VAL("45.67")
+PRINT "VAL('abc', 99) = " + VAL("abc", 99)
+PRINT "VAL('abc') = " + VAL("abc")
+
+// 4. RANDOM
+PRINT "--- RANDOM ---"
+FOR i = 1 TO 5
+    PRINT "RANDOM(10) [0-9]: " + RANDOM(10)
+NEXT
+
+// 5. ABS, INT, ROUND
+PRINT "--- MATH ---"
+PRINT "ABS(-12.3) = " + ABS(-12.3)
+PRINT "INT(12.7) = " + INT(12.7)
+PRINT "INT(-12.7) = " + INT(-12.7)
+PRINT "ROUND(12.4) = " + ROUND(12.4)
+PRINT "ROUND(12.5) = " + ROUND(12.5)

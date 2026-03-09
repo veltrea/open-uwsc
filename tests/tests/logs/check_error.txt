@@ -1,0 +1,70 @@
+    Checking open-uwsc v0.1.0 (C:\dev\uwsc\uwsc-rs)
+error[E0432]: unresolved import `windows::Win32::Foundation::BOOL`
+ --> src\builtins.rs:8:48
+  |
+8 | use windows::Win32::Foundation::{HWND, LPARAM, BOOL};
+  |                                                ^^^^ no `BOOL` in `Win32::Foundation`
+
+warning: unused import: `UnaryOp`
+ --> src\evaluator.rs:1:52
+  |
+1 | use crate::parser::{Stmt, Expr, Literal, BinaryOp, UnaryOp};
+  |                                                    ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0308]: mismatched types
+    --> src\builtins.rs:81:25
+     |
+  81 |             found: HWND(0),
+     |                    ---- ^ expected `*mut c_void`, found `usize`
+     |                    |
+     |                    arguments to this struct are incorrect
+     |
+     = note: expected raw pointer `*mut c_void`
+                       found type `usize`
+note: tuple struct defined here
+    --> C:\Users\veltrea\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows-0.62.2\src\Windows\Win32\Foundation\mod.rs:5670:12
+     |
+5670 | pub struct HWND(pub *mut core::ffi::c_void);
+     |            ^^^^
+help: if you meant to create a null pointer, use `std::ptr::null_mut()`
+     |
+  81 -             found: HWND(0),
+  81 +             found: HWND(std::ptr::null_mut()),
+     |
+
+error[E0308]: mismatched types
+  --> src\builtins.rs:88:32
+   |
+88 |         if criteria.found.0 != 0 {
+   |            ----------------    ^ expected `*mut c_void`, found `usize`
+   |            |
+   |            expected because this is `*mut c_void`
+   |
+   = note: expected raw pointer `*mut c_void`
+                     found type `usize`
+help: if you meant to create a null pointer, use `std::ptr::null_mut()`
+   |
+88 -         if criteria.found.0 != 0 {
+88 +         if criteria.found.0 != std::ptr::null_mut() {
+   |
+
+error[E0606]: casting `*mut c_void` as `f64` is invalid
+  --> src\builtins.rs:89:37
+   |
+89 |             Ok(RuntimeValue::Number(criteria.found.0 as f64))
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `direction`
+   --> src\builtins.rs:138:13
+    |
+138 |         let direction = if args.len() >= 2 {
+    |             ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_direction`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0308, E0432, E0606.
+For more information about an error, try `rustc --explain E0308`.
+warning: `open-uwsc` (bin "open-uwsc") generated 2 warnings
+error: could not compile `open-uwsc` (bin "open-uwsc") due to 4 previous errors; 2 warnings emitted

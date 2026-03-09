@@ -1,0 +1,21 @@
+TEXTBLOCK my_text
+  This is a line.
+  This is another line with "quotes" and stuff.
+  Next line should be empty:
+
+  The end.
+ENDTEXTBLOCK
+
+PRINT "Captured Text:"
+PRINT my_text
+
+IFB my_text = "  This is a line.
+  This is another line with \"quotes\" and stuff.
+  Next line should be empty:
+
+  The end.
+"
+    PRINT "TEXTBLOCK Test PASSED"
+ELSE
+    PRINT "TEXTBLOCK Test FAILED"
+ENDIF

@@ -1,0 +1,6 @@
+DIM multi[2, 3]
+multi[0, 0] = "TopLeft"
+multi[1, 2] = "BottomRight"
+PRINT multi[0, 0]
+PRINT multi[1, 2]
+// multi[2, 0] = "error" // Out of bounds

@@ -1,0 +1,5 @@
+STDOUT("stdout test")
+STDERR("stderr test")
+val = STDIN()
+STDOUT("received: " + val)
+EXITEXIT 42

@@ -1,0 +1,37 @@
+PRINT "--- REPEAT TEST ---"
+DIM c = 0
+REPEAT
+    c = c + 1
+    PRINT "Iteration: " + c
+UNTIL c >= 3
+PRINT "Final c: " + c
+
+PRINT ""
+PRINT "--- SELECT TEST ---"
+DIM val = 2
+SELECT val
+    CASE 1
+        PRINT "Selected: One"
+    CASE 2
+        PRINT "Selected: Two (Hit!)"
+    CASE 3
+        PRINT "Selected: Three"
+    DEFAULT
+        PRINT "Selected: Default"
+SELEND
+
+PRINT ""
+PRINT "--- TRY TEST ---"
+TRY
+    PRINT "Entering TRY block..."
+    // This will trigger a division by zero or type error if implemented correctly
+    DIM err = 1 / 0 
+    PRINT "This should not be printed"
+EXCEPT
+    PRINT "Caught error in EXCEPT block!"
+FINALLY
+    PRINT "Executing FINALLY block (Always executes)"
+ENDTRY
+
+PRINT ""
+PRINT "--- ALL TESTS COMPLETED ---"

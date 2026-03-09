@@ -1,0 +1,48 @@
+// Complex Control Structure Test
+
+PRINT "--- Nested Logic & Substrings ---"
+i = 1
+WHILE i <= 3
+    s = "LOOP" + i
+    PRINT "Outer While i=" + i + ", s=" + s
+    
+    FOR j = 1 TO i
+        part = COPY(s, 1, j)
+        PRINT "  Inner For j=" + j + ", part=" + part
+        
+        IF j == 2 THEN
+            PRINT "    Breaking Inner For at j=2"
+            BREAK
+        ENDIF
+    NEXT
+    
+    i = i + 1
+WEND
+
+PRINT "--- REPEAT UNTIL Test ---"
+count = 5
+REPEAT
+    PRINT "Count: " + count
+    count = count - 1
+UNTIL count == 0
+
+PRINT "--- Complex Break/Continue Simulation ---"
+// Testing if nested logic handles state correctly
+FOR x = 1 TO 3
+    IF x == 2 THEN
+        PRINT "Skipping x=2 (Continue logic simulation via IF)"
+    ELSE
+        PRINT "Processing x=" + x
+    ENDIF
+NEXT
+
+PRINT "--- Multi-condition WHILE ---"
+a = 1
+b = 10
+WHILE (a < 5) AND (b > 5)
+    PRINT "a=" + a + ", b=" + b
+    a = a + 1
+    b = b - 1
+WEND
+
+PRINT "Done."

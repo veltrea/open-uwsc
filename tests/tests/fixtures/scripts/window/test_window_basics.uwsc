@@ -1,0 +1,13 @@
+// test_window_basics.uwsc
+id = GETID("GET_ACTIVE_WIN")
+PRINT "Active HWND: " + id
+
+// MSGBOX Test (BTN_YESNO = 4)
+res = MSGBOX("Yes(6) or No(7)?", 4)
+PRINT "MSGBOX Result: " + res
+
+// SENDSTR Test (Requires a window with an edit box, like Notepad)
+// notepad = EXEC("notepad.exe")
+// SLEEP(0.5)
+// nid = GETID("メモ帳", "Notepad")
+// IF nid > 0 THEN SENDSTR(nid, "Hello from UWSC-RS!")

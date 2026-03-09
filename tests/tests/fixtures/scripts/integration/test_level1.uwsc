@@ -1,0 +1,24 @@
+// Phase 8 & 9 Level 1 Test
+PRINT "Testing SLEEP(0.2)..."
+SLEEP(0.2) 
+
+PRINT "Testing GETTIME()..."
+t = GETTIME()
+PRINT "Total Seconds: " + t
+
+// Note: G_TIME_YY etc. are defined but not yet auto-updated by GETTIME 
+// in this simplified implementation.
+PRINT "G_TIME_YY (Initial): " + G_TIME_YY
+
+PRINT "Testing MSGBOX with BTN_OK..."
+// MSGBOX currently only prints, but verifies constant resolution
+MSGBOX("Level 1 Success!", BTN_OK)
+
+PRINT "Verifying Phase 8 Fix (Notepad check)..."
+id = GETID("メモ帳", "Notepad")
+IF id > 0 THEN
+    PRINT "Sending text to verify SendMessageW fix..."
+    SENDSTR(id, "Antigravity Level 1 Test")
+ELSE
+    PRINT "Notepad not open, skipping SENDSTR test."
+ENDIF

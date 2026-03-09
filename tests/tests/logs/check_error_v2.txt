@@ -1,0 +1,96 @@
+    Checking open-uwsc v0.1.0 (C:\dev\uwsc\uwsc-rs)
+warning: unused import: `UnaryOp`
+ --> src\evaluator.rs:1:52
+  |
+1 | use crate::parser::{Stmt, Expr, Literal, BinaryOp, UnaryOp};
+  |                                                    ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0423]: expected function, tuple struct or tuple variant, found type alias `BOOL`
+  --> src\builtins.rs:34:28
+   |
+34 |                     return BOOL(0); // Stop enumeration
+   |                            ^^^^ not a function, tuple struct or tuple variant
+
+error[E0423]: expected function, tuple struct or tuple variant, found type alias `BOOL`
+  --> src\builtins.rs:39:5
+   |
+39 |     BOOL(1) // Continue
+   |     ^^^^ not a function, tuple struct or tuple variant
+
+error[E0308]: mismatched types
+    --> src\builtins.rs:84:25
+     |
+  84 |             found: HWND(0),
+     |                    ---- ^ expected `*mut c_void`, found `usize`
+     |                    |
+     |                    arguments to this struct are incorrect
+     |
+     = note: expected raw pointer `*mut c_void`
+                       found type `usize`
+note: tuple struct defined here
+    --> C:\Users\veltrea\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows-0.62.2\src\Windows\Win32\Foundation\mod.rs:5670:12
+     |
+5670 | pub struct HWND(pub *mut core::ffi::c_void);
+     |            ^^^^
+help: if you meant to create a null pointer, use `std::ptr::null_mut()`
+     |
+  84 -             found: HWND(0),
+  84 +             found: HWND(std::ptr::null_mut()),
+     |
+
+error[E0308]: mismatched types
+  --> src\builtins.rs:88:38
+   |
+88 |             let _ = EnumWindows(Some(enum_windows_callback), LPARAM(&mut criteria as *mut _ as isize));
+   |                                 ---- ^^^^^^^^^^^^^^^^^^^^^ expected fn pointer, found fn item
+   |                                 |
+   |                                 arguments to this enum variant are incorrect
+   |
+   = note: expected fn pointer `unsafe extern "system" fn(HWND, LPARAM) -> windows_result::bool::BOOL`
+                 found fn item `extern "system" fn(HWND, LPARAM) -> i32 {enum_windows_callback}`
+help: the type constructed contains `extern "system" fn(HWND, LPARAM) -> i32 {enum_windows_callback}` due to the type of the argument passed
+  --> src\builtins.rs:88:33
+   |
+88 |             let _ = EnumWindows(Some(enum_windows_callback), LPARAM(&mut criteria as *mut _ as isize));
+   |                                 ^^^^^---------------------^
+   |                                      |
+   |                                      this argument influences the type of `Some`
+note: tuple variant defined here
+  --> /rustc/01f6ddf7588f42ae2d7eb0a2f21d44e8e96674cf\library\core\src\option.rs:608:5
+
+error[E0308]: mismatched types
+  --> src\builtins.rs:91:32
+   |
+91 |         if criteria.found.0 != 0 {
+   |            ----------------    ^ expected `*mut c_void`, found `usize`
+   |            |
+   |            expected because this is `*mut c_void`
+   |
+   = note: expected raw pointer `*mut c_void`
+                     found type `usize`
+help: if you meant to create a null pointer, use `std::ptr::null_mut()`
+   |
+91 -         if criteria.found.0 != 0 {
+91 +         if criteria.found.0 != std::ptr::null_mut() {
+   |
+
+error[E0606]: casting `*mut c_void` as `f64` is invalid
+  --> src\builtins.rs:92:37
+   |
+92 |             Ok(RuntimeValue::Number(criteria.found.0 as f64))
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `direction`
+   --> src\builtins.rs:141:13
+    |
+141 |         let direction = if args.len() >= 2 {
+    |             ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_direction`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0308, E0423, E0606.
+For more information about an error, try `rustc --explain E0308`.
+warning: `open-uwsc` (bin "open-uwsc") generated 2 warnings
+error: could not compile `open-uwsc` (bin "open-uwsc") due to 6 previous errors; 2 warnings emitted

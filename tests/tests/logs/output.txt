@@ -1,0 +1,30 @@
+    Checking uwsc-rs v0.1.0 (C:\dev\uwsc\uwsc-rs)
+warning: unused import: `UnaryOp`
+ --> src\evaluator.rs:1:52
+  |
+1 | use crate::parser::{Stmt, Expr, Literal, BinaryOp, UnaryOp};
+  |                                                    ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0502]: cannot borrow `*self` as mutable because it is also borrowed as immutable
+  --> src\evaluator.rs:51:35
+   |
+51 |                 if self.is_truthy(self.eval_expr(condition)) {
+   |                    ---- --------- ^^^^^^^^^^^^^^^^^^^^^^^^^ mutable borrow occurs here
+   |                    |    |
+   |                    |    immutable borrow later used by call
+   |                    immutable borrow occurs here
+
+error[E0502]: cannot borrow `*self` as mutable because it is also borrowed as immutable
+  --> src\evaluator.rs:58:38
+   |
+58 |                 while self.is_truthy(self.eval_expr(condition)) {
+   |                       ---- --------- ^^^^^^^^^^^^^^^^^^^^^^^^^ mutable borrow occurs here
+   |                       |    |
+   |                       |    immutable borrow later used by call
+   |                       immutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+warning: `uwsc-rs` (bin "uwsc-rs") generated 1 warning
+error: could not compile `uwsc-rs` (bin "uwsc-rs") due to 2 previous errors; 1 warning emitted

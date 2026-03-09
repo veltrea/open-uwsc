@@ -1,0 +1,9 @@
+DIM init[] = [100, 200, 300]
+PRINT init[0]
+PRINT init[1]
+PRINT init[2]
+
+DIM dynamic[2]
+dynamic = [1, 2]
+PRINT dynamic[0]
+PRINT dynamic[1]

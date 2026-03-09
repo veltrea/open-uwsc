@@ -1,0 +1,19 @@
+DIM x = 10 + _
+        20 + _
+        30
+PRINT "x = " + x
+IFB x == 60
+    PRINT "Line Continuation Test PASSED"
+ELSE
+    PRINT "Line Continuation Test FAILED"
+ENDIF
+
+// Test with spaces after underscore
+DIM y = "Hello " + _  
+        "World"
+PRINT y
+IFB y == "Hello World"
+    PRINT "Line Continuation (with spaces) Test PASSED"
+ELSE
+    PRINT "Line Continuation (with spaces) Test FAILED"
+ENDIF

@@ -1,0 +1,19 @@
+// Integrated Automation Test (Phase 8)
+id = GETID("メモ帳", "Notepad")
+IF id > 0 THEN
+    PRINT "Found Notepad: " + id
+    CTRLWIN(id, ACTIVATE)
+    SLEEP(0.5)
+    
+    PRINT "Sending text..."
+    SENDSTR(id, "Hello from Antigravity!")
+    
+    PRINT "Moving mouse to (100, 100)..."
+    MMV(100, 100)
+    SLEEP(0.5)
+    
+    PRINT "Clicking at (100, 100)..."
+    BTN(LEFT, CLICK, 100, 100)
+ELSE
+    PRINT "Notepad NOT found. Please open Notepad to test."
+ENDIF

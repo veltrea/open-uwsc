@@ -1,0 +1,18 @@
+// test_def_dll.uwsc
+// GetTickCount from kernel32.dll
+DEF_DLL GetTickCount(): dword: kernel32.dll
+
+PRINT "Testing DEF_DLL: calling GetTickCount..."
+start = GetTickCount()
+SLEEP(0.5)
+end = GetTickCount()
+
+diff = end - start
+PRINT "Tick difference: " + diff
+
+// Threshold check (approx 500ms)
+IFB (diff > 400) and (diff < 1000)
+    PRINT "DEF_DLL Success: GetTickCount returned expected increments."
+ELSE
+    PRINT "DEF_DLL Failure: Unexpected tick difference."
+ENDIF

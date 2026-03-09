@@ -1,0 +1,92 @@
+    Checking open-uwsc v0.1.0 (C:\dev\uwsc\uwsc-rs)
+warning: unused import: `Rng`
+  --> src\builtins.rs:12:12
+   |
+12 | use rand::{Rng, RngExt};
+   |            ^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::collections::HashMap`
+  --> src\builtins.rs:14:5
+   |
+14 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0061]: this function takes 1 argument but 0 arguments were supplied
+  --> src\evaluator.rs:49:23
+   |
+49 |             builtins: Builtins::new(),
+   |                       ^^^^^^^^^^^^^-- argument #1 of type `std::option::Option<std::sync::mpsc::Sender<GuiRequest>>` is missing
+   |
+note: associated function defined here
+  --> src\builtins.rs:58:12
+   |
+58 |     pub fn new(gui_tx: Option<mpsc::Sender<GuiRequest>>) -> Self {
+   |            ^^^ ----------------------------------------
+help: provide the argument
+   |
+49 |             builtins: Builtins::new(/* std::option::Option<std::sync::mpsc::Sender<GuiRequest>> */),
+   |                                     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0308]: mismatched types
+   --> src\evaluator.rs:126:62
+    |
+126 |                 if let Ok(result) = self.builtins.call(name, &arg_vals) {
+    |                                                   ----       ^^^^^^^^^ types differ in mutability
+    |                                                   |
+    |                                                   arguments to this method are incorrect
+    |
+    = note: expected mutable reference `&mut [RuntimeValue]`
+                       found reference `&Vec<RuntimeValue>`
+note: method defined here
+   --> src\builtins.rs:65:12
+    |
+ 65 |     pub fn call(&mut self, name: &str, args: &mut [RuntimeValue]) -> Result<RuntimeValue, String> {
+    |            ^^^^                        -------------------------
+
+error[E0004]: non-exhaustive patterns: `RuntimeValue::Hash(_)` not covered
+   --> src\evaluator.rs:153:15
+    |
+153 |         match val {
+    |               ^^^ pattern `RuntimeValue::Hash(_)` not covered
+    |
+note: `RuntimeValue` defined here
+   --> src\evaluator.rs:6:10
+    |
+  6 | pub enum RuntimeValue {
+    |          ^^^^^^^^^^^^
+...
+ 11 |     Hash(std::collections::HashMap<String, RuntimeValue>),
+    |     ---- not covered
+    = note: the matched value is of type `RuntimeValue`
+help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
+    |
+158 ~             RuntimeValue::Array(a) => !a.is_empty(),
+159 ~             RuntimeValue::Hash(_) => todo!(),
+    |
+
+error[E0502]: cannot borrow `args[_]` as immutable because it is also borrowed as mutable
+   --> src\builtins.rs:176:20
+    |
+175 |         if let RuntimeValue::Array(ref mut a) = args[0] {
+    |                                    --------- mutable borrow occurs here
+176 |             a.push(args[1].clone());
+    |                    ^^^^^^^ immutable borrow occurs here
+177 |             Ok(RuntimeValue::Number(a.len() as f64))
+    |                                     - mutable borrow later used here
+
+error[E0502]: cannot borrow `args[_]` as immutable because it is also borrowed as mutable
+   --> src\builtins.rs:227:26
+    |
+226 |         if let RuntimeValue::Hash(ref mut h) = args[0] {
+    |                                   --------- mutable borrow occurs here
+227 |             Ok(h.remove(&args[1].to_string()).unwrap_or(RuntimeValue::Empty))
+    |                  ------  ^^^^^^^ immutable borrow occurs here
+    |                  |
+    |                  mutable borrow later used by call
+
+Some errors have detailed explanations: E0004, E0061, E0308, E0502.
+For more information about an error, try `rustc --explain E0004`.
+warning: `open-uwsc` (bin "open-uwsc") generated 2 warnings
+error: could not compile `open-uwsc` (bin "open-uwsc") due to 5 previous errors; 2 warnings emitted
